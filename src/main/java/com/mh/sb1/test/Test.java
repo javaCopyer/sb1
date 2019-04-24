@@ -6,11 +6,5 @@ public class Test {
 	}
 	
 	public static void main(String[] args) {
-		try {
-			say();
-		} catch (BusineessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

@@ -8,5 +8,6 @@
 </head>
 <body>
 	${name }
+	<img alt="123" src="static/img/s1.png"/>
 </body>
 </html>

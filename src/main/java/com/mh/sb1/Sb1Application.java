@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,8 +29,11 @@ public class Sb1Application extends SpringBootServletInitializer{
 	private UserService userService;
 	@Resource
 	private UserService2 userService2;
+	@Resource
+	private RedisTemplate<String, Object> redisTemplate;
 	@RequestMapping("index")
 	public String index() {
+		System.out.println(redisTemplate.opsForValue().get("zhangsan1234"));
 		return "你好 this index: " + userConfig.getName();
 		
 	}

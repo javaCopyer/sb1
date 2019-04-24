@@ -30,7 +30,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	        <groupId>javax.servlet</groupId> 
 	        <artifactId>jstl</artifactId> 
 	    </dependency>
-	    
+	     <!-- 热部署配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
 	    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,6 +79,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+		<!-- swagger 开源ui界面 -->
+	<dependency>
+	    <groupId>com.github.xiaoymin</groupId>
+	    <artifactId>swagger-bootstrap-ui</artifactId>
+	    <version>1.9.0</version>
+	</dependency>
 		
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,6 +102,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.0.0</version>
 		</dependency>
+		
+		 <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -106,7 +123,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	  	<dependency>
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>fastjson</artifactId>
-		    <version>1.2.35</version>
+		    <version>1.2.54</version>
 	    </dependency>
 	</dependencies>
 

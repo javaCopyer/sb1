@@ -1,32 +1,43 @@
 package com.mh.sb1.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.Map;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mh.sb1.config.UserService;
 import com.mh.sb1.model.CustomRequest;
 import com.mh.sb1.model.UserRequest;
 import com.mh.sb1.model.UserResponse;
+import com.mh.sb1.test.TestBean123;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 @RestController
-@Api(value="api测试")
+@Api(tags={"api文档"})
 public class ApiController {
+	@Resource
+	TestBean123 tb123;
 	
 	@RequestMapping(value="/testp1", method=RequestMethod.GET)
 	@ApiOperation("api测试方法")
-	public UserResponse test111(@RequestParam UserRequest request) {
+	public UserResponse test111(UserRequest request, HttpServletRequest req) {
+		System.out.println(tb123.tb.getName());
 		UserResponse res  = new UserResponse();
-		res.setUserName("zc");
+		res.setUserName("zcccc");
+		
 		res.setDate(new Date());
+		
 		return res;
 	}
 	
@@ -34,16 +45,24 @@ public class ApiController {
 	@ApiOperation("api测试方法")
 	public UserResponse test222(@RequestParam Map<String, String> map) {
 		UserResponse res  = new UserResponse();
-		res.setUserName(map.get("na"));
+		res.setUserName(map.get("name"));
 		res.setDate(new Date());
 		return res;
 	}
 	
-	@RequestMapping(value="/testp3", method=RequestMethod.GET)
+	@RequestMapping(value="/testp3", method=RequestMethod.POST)
 	@ApiOperation("api测试方法")
-	public UserResponse test333(CustomRequest request) {
-		System.out.println(request.getUserName());
-		System.out.println(request.getHeadMap());
+	public UserResponse test333(CustomRequest request, HttpServletRequest req, @RequestBody Map<String, String> map) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream()));
+		String line = null;
+		StringBuilder builder = new StringBuilder();
+		while ((line = reader.readLine()) != null) {
+			builder.append(line);
+			
+		}
+		String resStr = builder.toString();
+		System.out.println("聚汇支付响应报文：" + resStr);
+		System.out.println(map);
 		UserResponse res  = new UserResponse();
 		res.setUserName(request.getUserName());
 		res.setDate(new Date());
