@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel("用户请求")
 public class UserRequest {
 	@ApiModelProperty(value="用户名", required=true)
+//	@ApiParam(name="姓名吗", value="name")
 	@NotNull
 	private String name;
 	@ApiModelProperty(value="手机号")
